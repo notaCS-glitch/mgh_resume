@@ -56,6 +56,14 @@ Technologies used: Python, SQL, GCS, Airflow, Github, Github Actions, Hackolade,
 Project Descriptions:
 1. Metadata Guardrail 
    - Leading a team and also developing the back end for a web application form submission that will run scripts and a third party tool to auto generate table creation submissions to BigQuery. This submission form applies business rules to naming, descriptions, and other pieces of metadata to ensure proper table creation to business standards. Metadata is submitted to a third party tool (Hackolade) to auto generate the physical model of the table within the schema. This generated model is then used to auto generate the table DDL. Schema evolution is preserved via GitHub. Github Actions act as the CICD mechanism to move our DDLs to GCS. Once in GCS the DDLs trigger a cloud function to start an Airflow job to create the table in BigQuery.
+     ```mermaid
+     graph TD;
+     User([fa:fa-user User]) --> Web[fa:fa-globe Website];
+
+     Metadata_Guardrail_Host -->|API Request| LoadBalancer;
+     LoadBalancer --> Server1;
+     LoadBalancer --> Server2;
+     ```
 2. Emergency data migration 
    - Gathered migration requirements. Developed a bash script to automate data migration from SingleStore to cloud storage.
 3. Enterprise Data Lake House
@@ -105,23 +113,3 @@ Project Descriptions:
 ## Certifications 
 https://www.credly.com/users/michael-hyle/badges#credly
 
-
-
-
-
-
-
-
-[//]: # (```mermaid)
-
-[//]: # ()
-[//]: # (graph TD;)
-
-[//]: # (    Client -->|API Request| LoadBalancer;)
-
-[//]: # (    LoadBalancer --> Server1;)
-
-[//]: # (    LoadBalancer --> Server2;)
-
-[//]: # ()
-[//]: # (```)
